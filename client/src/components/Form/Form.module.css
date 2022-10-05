@@ -1,0 +1,48 @@
+.card{
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    padding-top: 20px;
+   border: solid black 1px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    
+    
+    padding: 10px;
+    
+}
+
+input{
+    margin: 30px 20px 20px 20px;
+    
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    font-size: large;
+
+}
+h1{
+    display: flex;
+    justify-content: center;
+    
+}
+
+label{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top:10px;
+    font-size: larger;
+}
+button{
+    margin: 30px 20px 20px 20px;
+    
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(223, 136, 22);
+    font-size: x-large;
+}
