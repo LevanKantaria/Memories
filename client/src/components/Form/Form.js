@@ -1,13 +1,16 @@
 import classes from "./Form.module.css";
-import { useState } from "react";
-import axios from "axios";
+import {  useState } from "react";
 import { useDispatch } from "react-redux";
-import { postActions } from "../../features/posts/postsSlice";
 import { uploadPost } from "../../features/posts/postsSlice";
-import { TextField } from "@mui/material";
+import { postActions } from "../../features/posts/postsSlice";
+import InputField from "../InputField/Input";
 
+let creatorIsValid =false
+let messageIsValid =false
+let imageIsValid = false
+let titleIsValid = false
+let tagsIsValid = false
 const Form = () => {
-  // const isLoading = useSelector(state=>state.posts.loading)
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
@@ -16,35 +19,79 @@ const Form = () => {
   const [tags, setTags] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
 
-  const creatorChangeHandler = (e) => {
-    setCreator(e.target.value);
+  //     these change handlers are called from child input component
+  // and 'e' holds e.target.value from the child , id hold id of input
+  const creatorChangeHandler = (e, valid) => {
+    setCreator(e);
+    creatorIsValid = valid;
   };
-  const titleChangeHandler = (e) => {
-    setTitle(e.target.value);
+  const messageChangeHandler = (e, valid) => {
+    setMessage(e);
+    messageIsValid = valid;
   };
-  const messageChangeHandler = (e) => {
-    setMessage(e.target.value);
+  const titleChangeHandler = (e, valid) => {
+    setTitle(e);
+    titleIsValid = valid;
   };
-  const imageChangeHandler = (e) => {
-    setSelectedFile(e.target.value);
+  const tagsChangeHandler = (e, valid) => {
+    setTags(e);
+    tagsIsValid = valid;
   };
-  const tagsChangeHandler = (e) => {
-    setTags(e.target.value);
+  const imageChangeHandler = (e, valid) => {
+    setSelectedFile(e);
+    imageIsValid = valid;
+  };
+
+  //  validation function that is provided to input fields
+  const validate = (value) => {
+    if (value.length > 2) return true;
+    return false;
+  };
+  const urlValidation = (value) => {
+    if (value.startsWith("https://") || value.startsWith("data:image"))
+      return true;
+    return false;
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
-    let date = new Date().toString();
-    let post = {
-      creator,
-      title,
-      message,
-      tags,
-      selectedFile,
-      createdAt: date,
-      id: "",
-    };
-    dispatch(uploadPost(post));
+    let formIsValid =(
+      messageIsValid &&
+      titleIsValid &&
+      tagsIsValid &&
+      imageIsValid &&
+      creatorIsValid
+      )
+      console.log(formIsValid)
+    e.preventDefault();
+    if (formIsValid) {
+      console.log(formIsValid);
+
+      let date = new Date().toString();
+      let post = {
+        creator,
+        title,
+        message,
+        tags,
+        selectedFile,
+        createdAt: date,
+        id: "",
+      };
+      dispatch(uploadPost(post));
+      setCreator("");
+      setTags("");
+      setTitle("");
+      setSelectedFile("");
+      setMessage("");
+      messageIsValid = false;
+      titleIsValid = false;
+      tagsIsValid = false;
+      imageIsValid = false;
+      creatorIsValid = false;
+      dispatch(postActions.addError(false))
+    }else{
+      dispatch(postActions.addError(true))
+    }
   };
 
   let buttonLabel;
@@ -55,48 +102,58 @@ const Form = () => {
   }
   return (
     <div className={classes.card}>
-      <h1>Form</h1>
+      <h1>New Memory</h1>
       <form>
-        <TextField
-          id="outlined-basic"
+        <InputField
+          id="creator"
           label="Creator"
-          variant="outlined"
+          isValid={validate}
+          error="Enter Valid Name, min 3 letters"
           onChange={creatorChangeHandler}
-          margin="dense"
+          value={creator}
         />
 
-        <TextField
-          id="outlined-basic"
+        <InputField
+          id="title"
           label="Title"
-          variant="outlined"
+          isValid={validate}
+          error="Enter Valid Title, min 3 letters"
           onChange={titleChangeHandler}
-          margin="dense"
+          value={title}
         />
 
-        <TextField
-          id="outlined-basic"
+        <InputField
+          id="message"
           label="Message"
-          variant="outlined"
+          isValid={validate}
+          error="Enter Valid Message, min 3 letters"
           onChange={messageChangeHandler}
-          margin="dense"
+          value={message}
         />
 
-        <TextField
-          id="outlined-basic"
+        <InputField
+          id="tags"
           label="Tags"
-          variant="outlined"
+          isValid={validate}
+          error="Enter Valid Title, min 3 letters"
           onChange={tagsChangeHandler}
-          margin="dense"
+          value={tags}
         />
 
-<TextField
-          id="outlined-basic"
+        <InputField
+          id="image"
           label="Image URL"
-          variant="outlined"
+          isValid={urlValidation}
+          error="Enter Valid Url or data file"
           onChange={imageChangeHandler}
-          margin="dense"
+          value={selectedFile}
         />
         <button onClick={submitHandler}>{buttonLabel}</button>
+        {/* {error && (
+          <div className={classes.error}>
+            <h4> {error}</h4>
+          </div>
+        )} */}
       </form>
     </div>
   );

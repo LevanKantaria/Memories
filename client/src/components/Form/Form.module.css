@@ -46,3 +46,29 @@ button{
     background-color: rgb(223, 136, 22);
     font-size: x-large;
 }
+
+.error{
+    display: flex;
+    background-color: rgb(233, 140, 140);
+    justify-content: center;
+    width: auto;
+    animation: error 1s ease-in-out forwards;
+    border-radius: 10px;
+}
+
+@keyframes error {
+    0%{
+     opacity: 0;
+     transform: translateY(0px)  
+    } 
+   
+    
+    80%{
+     opacity: 1;
+     
+    } 
+   
+    100%{
+     opacity: 0.0;
+    } 
+   }
