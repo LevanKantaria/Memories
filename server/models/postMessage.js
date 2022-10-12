@@ -6,6 +6,7 @@ const postSchema = mongoose.Schema({
     required:true,
     minlength:3,
     trim:true,
+    maxlength:15,
 
 },
   message: {
@@ -13,6 +14,7 @@ const postSchema = mongoose.Schema({
     required:true,
     minlength:3,
     trim:true,
+    maxlength:120,
 
 },
   creator:{
@@ -20,6 +22,7 @@ const postSchema = mongoose.Schema({
     required:true,
     minlength:3,
     trim:true,
+    maxlength:15,
 
 },
   tags: {
@@ -32,7 +35,7 @@ const postSchema = mongoose.Schema({
   selectedFile: {
     type:String,
     required:true,
-    minlength:3,
+    minlength:4,
     trim:true,
 
 },
