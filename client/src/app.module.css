@@ -1,22 +1,54 @@
+body {
+  background-color: #ffffff;
+  background-color: #290233;
+  background-color: #290233;
+  background-color: #ff7700;
+  /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%23cc0000' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%23aa0000' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%23d6002b' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%23b10022' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%23d9004b' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23b2003d' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%23d3006c' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23ac0057' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%23c4008c' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%239e0071' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%23aa00aa' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%23880088' points='943 900 1210 900 971 687'/%3E%3C/svg%3E"); */
+  background: linear-gradient(328deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
 
-.appBar{
-  border-radius: 15;
-  margin : 0 0 30px 0;
+  background-attachment: fixed;
+  background-size: cover;  font-family: "Montserrat", sans-serif;
+  font-family: "Open Sans", sans-serif;
+}
+
+.heading {
+  color: rgba(0, 183, 255, 1);
+}
+
+.image {
+  margin-left: 15px;
+}
+
+.main {
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
-  align-items: center;
-  color: red;
-  background-color: red;
+   flex-direction: column-reverse;
 }
 
-.heading{
-  color: rgba(0,183,255, 1),
-
+.cards {
+  max-width: 100%;
+  margin: auto;
+}
+.uploadButton{
+  position: absolute;
+  bottom: 100px;
+  right: 100px;
 }
 
+@media only screen and (max-width: 1024px) {
+  .main {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 
-.image{
-  margin-left: 15px,
+  .gridItem1 {
+    max-width: 100%;
+   
 
+  }
+  .gridItem2 {
+    width: 400px;
+    max-width: 100%;
+    margin: auto;
+    margin-bottom: 50px;
+  }
 }

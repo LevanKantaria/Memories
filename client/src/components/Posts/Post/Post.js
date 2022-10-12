@@ -1,14 +1,12 @@
 import React from "react";
-import { useState } from "react";
 import classes from "./Post.module.css";
 import Moment from "react-moment";
 import { useDispatch } from "react-redux";
-import axios from "axios";
-import { fetchPosts } from "../../../features/posts/postsSlice";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import DeleteIcon from "@mui/icons-material/Delete";
+import CustomButton from "../../CustomButton/CustomButton";
 import { deletePost } from "../../../features/posts/postsSlice";
 const Post = (props) => {
-  const [state, setState] = useState("");
-
   const dispatch = useDispatch();
   const deleteHandler = (e) => {
     dispatch(deletePost(props.id));
@@ -24,16 +22,27 @@ const Post = (props) => {
         </div>
         <img src={props.image} alt="deco" />
       </div>
-      <div>
-        <p className={classes.tags}>#{props.tags}</p>
-        <div className={classes.title}>
-          <h1>{props.title} </h1>
-        </div>
-        <div className={classes.message}>{props.message} </div>
-      </div>
+
+      <p className={classes.tags}>#{props.tags}</p>
+      <article className={classes.title}>
+        <h1>{props.title} </h1>
+      </article>
+      <p className={classes.message}>{props.message} </p>
+
       <div className={classes.likeDelete}>
-        <button>Like {props.likeCount}</button>
-        <button onClick={deleteHandler}>Delete</button>
+        <CustomButton
+          buttonText={<FavoriteBorderIcon />}
+          extraButtonText={props.likeCount}
+          height="30px"
+          width="100px"
+        />
+
+        <CustomButton
+          onClick={deleteHandler}
+          buttonText={<DeleteIcon />}
+          height="30px"
+          width="100px"
+        />
       </div>
     </div>
   );

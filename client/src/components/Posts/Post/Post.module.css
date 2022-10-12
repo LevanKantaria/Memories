@@ -1,10 +1,16 @@
 .card{
+    
     border-radius: 20px;
     background-color: rgb(255, 255, 255);
-    width: 350px;
+    width: 300px;
     height: 450px;       
-    margin-bottom: 50px;
-    border: solid black 1px;
+    
+    margin-bottom: 5px;
+    
+    border: solid rgba(5, 2, 0, 0.562) 1px;
+    
+
+
     }
 
 
@@ -61,34 +67,39 @@
 
 }
 .message{
-    display: flex;
-    justify-content: center;
+    display: block;
+    flex-direction: row;
+    justify-self: center;
     align-items: center;
     color: rgb(99, 98, 98);
-    margin: 20px;
+    width: 90%;
+    margin: auto;
+    
+    height: 75px;
 
+}
+.title{
+    margin-top: -10px;
+    margin-bottom: -10px;
 }
 
 .likeDelete{
+    position: inherit;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    bottom: 10px;
+    
+   
 
 
 }
 
-.likeDelete button{
-    height:30px;
-    width: 80px;
-}
-.likeDelete :hover{
-    cursor: pointer;
-}
 
-.likeDelete :active{
-    background-color: rgb(100, 209, 57);
-    cursor: pointer;
-}
-button :hover{
-    cursor: pointer;
+
+@media(max-width:1024px){
+    .card{
+        margin: auto;  
+    
+        }
 }

@@ -1,74 +1,84 @@
-.card{
+.modalBackground{
+    background: rgba(0, 0, 0, 0.493);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+
+    height: 100vh;
+    z-index: 8;
+   
+}
+
+.card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  padding-top: 20px;
+  border: solid black 1px;
+  width: 350px;
+  z-index: 10;
+  
+}
+.closeButtonSection{
+ margin-bottom: -30px;
+ width: 40px;
+ margin-right: 20px;
+ margin-left: auto;
+ 
+}
+.closeButton{
+  border: none;
+  background-color: rgba(240, 248, 255, 0);
+  margin-right: 0px;
+}
+.closeButton:hover{
+  cursor: pointer;
+  border: none;
+  background-color: rgba(240, 248, 255, 0);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+
+  padding: 10px;
+}
+
+input {
+  margin: 30px 20px 20px 20px;
+
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  font-size: large;
+}
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+label {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 10px;
+  font-size: larger;
+}
+
+@media (max-width: 1024px) {
+  .card {
     border-radius: 10px;
     background-color: rgb(255, 255, 255);
     padding-top: 20px;
-   border: solid black 1px;
+    border: solid black 1px;
+    width: 90%;
+    margin: auto;
+  }
 }
-
-form{
-    display: flex;
-    flex-direction: column;
-    
-    
-    padding: 10px;
-    
-}
-
-input{
-    margin: 30px 20px 20px 20px;
-    
-    height: 30px;
-    border-radius: 10px;
-    border: none;
-    padding: 10px;
-    font-size: large;
-
-}
-h1{
-    display: flex;
-    justify-content: center;
-    
-}
-
-label{
-    display: flex;
-    justify-content: center;
-    position: relative;
-    top:10px;
-    font-size: larger;
-}
-button{
-    margin: 30px 20px 20px 20px;
-    
-    height: 50px;
-    border-radius: 10px;
-    border: none;
-    background-color: rgb(223, 136, 22);
-    font-size: x-large;
-}
-
-.error{
-    display: flex;
-    background-color: rgb(233, 140, 140);
-    justify-content: center;
-    width: auto;
-    animation: error 1s ease-in-out forwards;
-    border-radius: 10px;
-}
-
-@keyframes error {
-    0%{
-     opacity: 0;
-     transform: translateY(0px)  
-    } 
-   
-    
-    80%{
-     opacity: 1;
-     
-    } 
-   
-    100%{
-     opacity: 0.0;
-    } 
-   }

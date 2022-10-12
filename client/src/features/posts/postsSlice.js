@@ -8,13 +8,13 @@ const initialState = {
   error: "",
 };
 
-
+const API_POSTS = "http://localhost:5000/posts"
 
 //  Fetch All posts ---
 export const fetchPosts = createAsyncThunk("posts/fetchPosts",async () => {
 
   let tempData = [];
-  const promise = axios.get("http://localhost:5000/posts").then((res) => {
+  const promise = axios.get(API_POSTS).then((res) => {
     let data = res.data;
     for (let key in data) {
       tempData.unshift({
@@ -42,7 +42,7 @@ export const fetchPosts = createAsyncThunk("posts/fetchPosts",async () => {
 
 // --- Upload Post ---
 export const uploadPost = createAsyncThunk("posts/uploadPost", async(postToUpload)=>{
-  const promise = axios.post("http://localhost:5000/posts", postToUpload).then(res=>{
+  const promise = axios.post(API_POSTS, postToUpload).then(res=>{
     postToUpload.id=res.data._id
     return postToUpload;
   })
@@ -58,7 +58,7 @@ export const uploadPost = createAsyncThunk("posts/uploadPost", async(postToUploa
 //  Delete Post ---
 
 export const deletePost = createAsyncThunk('posts/deletePost', async(id)=>{
-  const promise = axios.delete('http://localhost:5000/posts/'+id).then(res=>{
+  const promise = axios.delete(API_POSTS + '/'+ id).then(res=>{
     let resId = res.data._id
     console.log(resId)
     return resId

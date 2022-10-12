@@ -1,0 +1,26 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
+   margin: auto;
+  /* width: 100vw; */
+  /* justify-content: center; */
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc((100vw - 600px) / 3);
+    margin: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2em;
+    margin: auto;
+  }
+}

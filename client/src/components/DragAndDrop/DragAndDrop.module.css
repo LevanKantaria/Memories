@@ -1,0 +1,59 @@
+.dragDrop {
+    width: 100%;
+    height: 200px;
+    background-color: #f7f7f7;
+    border: dashed 2px #4386a9;
+    border-radius: 18px;
+    margin: auto;
+  }
+  
+  .dragButton {
+    background-color: #317ad0;
+    border: none;
+    width: 140px;
+    height: 40px;
+    border-radius: 10px;
+
+
+
+  }
+  .dragButton:hover {
+    background-color: #317ad0;
+  }
+  
+  .dragButton button:active {
+    background-color: #1a5dab;
+  }
+  
+  .dragDropInvalid {
+    width: 100%;
+    height: 200px;
+    border: dashed 2px #4386a9;
+    background-color: rgba(255, 0, 0, 0.199);
+    border-radius: 18px;
+    margin: auto;
+  }
+  .dragText {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #4386a9;
+    width: 195px;
+    height: 76px;
+    font-size: 19px;
+    line-height: 38px;
+    font-style: normal;
+    font-weight: 500;
+    margin: auto;
+    margin-top: 30px;
+  }
+
+  .buttonAndText{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    margin: auto;
+
+  }

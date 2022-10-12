@@ -1,7 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import axios from "axios";
+import classes from './Posts.module.css'
 import Post from "./Post/Post";
 import { useSelector } from "react-redux";
 
@@ -29,10 +27,11 @@ const Posts = () => {
 
 
   return (
-    <>
+    <div className={classes.grid}>
+
       {postsJsx}
     
-    </>
+    </div>
   );
 };
 

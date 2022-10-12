@@ -1,0 +1,95 @@
+.iconBtn {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #cdcdcd;
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+    transition: width 0.2s ease-in-out;
+    font-weight: 500;
+    font-family: inherit;
+  }
+  
+  .addBtn:hover {
+    width: 120px;
+  }
+  
+  .addBtn::before,
+  .addBtn::after {
+    transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 10px;
+    top: calc(50% - 2px);
+    background: rgb(78, 174, 204);
+  }
+  
+  .addBtn::after {
+    right: 14px;
+    overflow: hidden;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+  }
+  
+  .addBtn::before {
+    left: 14px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+  
+  .iconBtn:focus {
+    outline: none;
+  }
+  
+  .btnTxt {
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  
+  .addBtn:hover::before,
+  .addBtn:hover::after {
+    width: 4px;
+    border-radius: 2px;
+  }
+  
+  .addBtn:hover .btnTxt {
+    opacity: 1;
+  }
+  
+  .addIcon::after,
+  .addIcon::before {
+    transition: all 0.2s ease-in-out;
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 2px;
+    top: calc(50% - 10px);
+    background: rgb(78, 174, 204);
+    overflow: hidden;
+  }
+  
+  .addIcon::before {
+    left: 22px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+  
+  .addIcon::after {
+    right: 22px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+  }
+  
+  .addBtn:hover .addIcon::before {
+    left: 15px;
+    height: 4px;
+    top: calc(50% - 2px);
+  }
+  
+  .addBtn:hover .addIcon::after {
+    right: 15px;
+    height: 4px;
+    top: calc(50% - 2px);
+  }
