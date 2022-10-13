@@ -6,7 +6,7 @@ const CustomButton = (props) => {
       <button
         onClick={props.onClick}
         className={classes.button}
-        style={{ height: `${props.height}`, width:`${props.width}` }}
+        style={{ height: `${props.height}`, width:`${props.width}`,background: `${props.background}` } }
       >
         {props.buttonText} {props.extraButtonText}
       </button>

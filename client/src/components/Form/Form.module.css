@@ -71,7 +71,10 @@ label {
   top: 10px;
   font-size: larger;
 }
-
+.closeAndSubmit{
+  display: flex;
+  
+}
 @media (max-width: 1024px) {
   .card {
     border-radius: 10px;

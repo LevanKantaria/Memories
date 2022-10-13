@@ -18,6 +18,7 @@
 
   }
   .dragButton:hover {
+    cursor: pointer;
     background-color: #317ad0;
   }
   

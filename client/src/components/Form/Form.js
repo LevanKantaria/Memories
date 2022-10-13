@@ -6,8 +6,8 @@ import { postActions } from "../../features/posts/postsSlice";
 import CustomButton from "../CustomButton/CustomButton";
 import InputField from "../InputField/Input";
 import DragAndDrop from "../DragAndDrop/DragAndDrop";
+import TagsInput from "../TagsInput/TagsInput";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-
 
 let creatorIsValid = false;
 let messageIsValid = false;
@@ -41,6 +41,7 @@ const Form = (props) => {
   };
   const tagsChangeHandler = (e, valid) => {
     setTags(e);
+    console.log(e)
     tagsIsValid = valid;
   };
   // const imageChangeHandler = (e, valid) => {
@@ -48,11 +49,11 @@ const Form = (props) => {
   //   imageIsValid = valid;
   // };
 
-  const imageUploadHandler = (e,valid) => {
+  const imageUploadHandler = (e, valid) => {
     imageIsValid = valid;
-    console.log(imageIsValid)
-    
-    setSelectedFile(e)
+    console.log(imageIsValid);
+
+    setSelectedFile(e);
     // console.log(e)
   };
 
@@ -111,7 +112,7 @@ const Form = (props) => {
       imageIsValid = false;
       creatorIsValid = false;
       dispatch(postActions.addError(false));
-      props.onBackgroundClick();
+      props.onClose();
     } else {
       dispatch(postActions.addError(true));
     }
@@ -126,12 +127,14 @@ const Form = (props) => {
   return (
     <div className={classes.modalBackground}>
       <div className={classes.card}>
-        <section className={classes.closeButtonSection} >
-          <button className={classes.closeButton} onClick={props.onBackgroundClick}>
-            
+        {/* <section className={classes.closeButtonSection}>
+          <button
+            className={classes.closeButton}
+            onClick={props.onClose}
+          >
             <CloseRoundedIcon fontSize="large" />
           </button>
-        </section>
+        </section> */}
 
         <h1>New Memory</h1>
         <form>
@@ -162,14 +165,15 @@ const Form = (props) => {
             value={message}
           />
 
-          <InputField
+          {/* <InputField
             id="tags"
             label="Tags"
             isValid={validate}
             error="Enter Valid Title, min 3 letters"
             onChange={tagsChangeHandler}
             value={tags}
-          />
+          /> */}
+          <TagsInput onChange={tagsChangeHandler} />
 
           {/* <InputField
             id="image"
@@ -179,15 +183,25 @@ const Form = (props) => {
             onChange={imageChangeHandler}
             value={selectedFile}
           /> */}
-          <DragAndDrop
-            onChange ={imageUploadHandler}
-          />
+
+          <DragAndDrop onChange={imageUploadHandler} />
+          <div className={classes.closeAndSubmit}>
+
+            <CustomButton
+              width="60%"
+              height="50"
+              onClick={props.onClose}
+              buttonText='cancel'
+              background='grey'
+              />
           <CustomButton
-            width="90%"
+            width="30%"
             height="50"
             onClick={submitHandler}
             buttonText={buttonLabel}
-          />
+            
+            />
+            </div>
         </form>
       </div>
     </div>

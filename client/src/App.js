@@ -20,7 +20,7 @@ const App = () => {
   return (
     <Container maxWidth="lg">
       {displayFormModal && <Form 
-        onBackgroundClick={()=>{setDisplayFormModal(!displayFormModal)}}
+        onClose={()=>{setDisplayFormModal(!displayFormModal)}}
       />}
       <AppBar
         style={{
