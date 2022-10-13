@@ -6,6 +6,7 @@ import { postActions } from "../../features/posts/postsSlice";
 import CustomButton from "../CustomButton/CustomButton";
 import InputField from "../InputField/Input";
 import DragAndDrop from "../DragAndDrop/DragAndDrop";
+import TagsInput from "../TagsInput/TagsInput";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
 
@@ -135,6 +136,7 @@ const Form = (props) => {
 
         <h1>New Memory</h1>
         <form>
+          <TagsInput />
           <InputField
             id="creator"
             label="Creator"
@@ -170,6 +172,8 @@ const Form = (props) => {
             onChange={tagsChangeHandler}
             value={tags}
           />
+
+
 
           {/* <InputField
             id="image"
