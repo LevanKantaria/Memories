@@ -23,7 +23,7 @@ const Post = (props) => {
         <img src={props.image} alt="deco" />
       </div>
 
-      <p className={classes.tags}>#{props.tags}</p>
+      <p className={classes.tags}>{props.tags}</p>
       <article className={classes.title}>
         <h1>{props.title} </h1>
       </article>

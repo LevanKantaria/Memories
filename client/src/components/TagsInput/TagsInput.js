@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 // import { render } from 'react-dom';
 // import { COUNTRIES } from './countries';
-import './style.css';
-import { WithContext as ReactTags } from 'react-tag-input';
+import "./style.css";
+import { WithContext as ReactTags } from "react-tag-input";
 
 // const suggestions = COUNTRIES.map(country => {
 //   return {
@@ -14,25 +14,28 @@ import { WithContext as ReactTags } from 'react-tag-input';
 const KeyCodes = {
   comma: 188,
   enter: 13,
-  space:32
+  space: 32,
 };
 
 const delimiters = [KeyCodes.comma, KeyCodes.enter, KeyCodes.space];
 
-const TagsInput = () => {
-  const [tags, setTags] = React.useState([
-    { id: 'Thailand', text: 'Thailand' },
-    { id: 'India', text: 'India' },
-    { id: 'Vietnam', text: 'Vietnam' },
-    { id: 'Turkey', text: 'Turkey' }
-  ]);
+const TagsInput = (props) => {
+  const [tags, setTags] = React.useState([]);
 
-  const handleDelete = i => {
+  const handleDelete = (i) => {
     setTags(tags.filter((tag, index) => index !== i));
   };
 
-  const handleAddition = tag => {
+  const handleAddition = (tag) => {
     setTags([...tags, tag]);
+    // console.log(tags)
+    
+      let planeTags = tags.map((tag) => {
+        return `#${tag.id}`;
+      });
+      console.log(planeTags);
+      props.onChange([...planeTags, '#' + tag.id], tags.length > 0);
+  
   };
 
   const handleDrag = (tag, currPos, newPos) => {
@@ -45,17 +48,16 @@ const TagsInput = () => {
     setTags(newTags);
   };
 
-  const handleTagClick = index => {
-    console.log('The tag at index ' + index + ' was clicked');
+  const handleTagClick = (index) => {
+    console.log("The tag at index " + index + " was clicked");
   };
 
   return (
     <div className="app">
-      <h1> React Tags Example </h1>
       <div>
         <ReactTags
           tags={tags}
-        //   suggestions={suggestions}
+          //   suggestions={suggestions}
           delimiters={delimiters}
           handleDelete={handleDelete}
           handleAddition={handleAddition}
@@ -69,4 +71,4 @@ const TagsInput = () => {
   );
 };
 
-export default TagsInput
+export default TagsInput;

@@ -9,7 +9,6 @@ import DragAndDrop from "../DragAndDrop/DragAndDrop";
 import TagsInput from "../TagsInput/TagsInput";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
-
 let creatorIsValid = false;
 let messageIsValid = false;
 let imageIsValid = false;
@@ -42,6 +41,7 @@ const Form = (props) => {
   };
   const tagsChangeHandler = (e, valid) => {
     setTags(e);
+    console.log(e)
     tagsIsValid = valid;
   };
   // const imageChangeHandler = (e, valid) => {
@@ -49,11 +49,11 @@ const Form = (props) => {
   //   imageIsValid = valid;
   // };
 
-  const imageUploadHandler = (e,valid) => {
+  const imageUploadHandler = (e, valid) => {
     imageIsValid = valid;
-    console.log(imageIsValid)
-    
-    setSelectedFile(e)
+    console.log(imageIsValid);
+
+    setSelectedFile(e);
     // console.log(e)
   };
 
@@ -127,16 +127,17 @@ const Form = (props) => {
   return (
     <div className={classes.modalBackground}>
       <div className={classes.card}>
-        <section className={classes.closeButtonSection} >
-          <button className={classes.closeButton} onClick={props.onBackgroundClick}>
-            
+        <section className={classes.closeButtonSection}>
+          <button
+            className={classes.closeButton}
+            onClick={props.onBackgroundClick}
+          >
             <CloseRoundedIcon fontSize="large" />
           </button>
         </section>
 
         <h1>New Memory</h1>
         <form>
-          <TagsInput />
           <InputField
             id="creator"
             label="Creator"
@@ -164,16 +165,15 @@ const Form = (props) => {
             value={message}
           />
 
-          <InputField
+          {/* <InputField
             id="tags"
             label="Tags"
             isValid={validate}
             error="Enter Valid Title, min 3 letters"
             onChange={tagsChangeHandler}
             value={tags}
-          />
-
-
+          /> */}
+          <TagsInput onChange={tagsChangeHandler} />
 
           {/* <InputField
             id="image"
@@ -183,9 +183,8 @@ const Form = (props) => {
             onChange={imageChangeHandler}
             value={selectedFile}
           /> */}
-          <DragAndDrop
-            onChange ={imageUploadHandler}
-          />
+
+          <DragAndDrop onChange={imageUploadHandler} />
           <CustomButton
             width="90%"
             height="50"
