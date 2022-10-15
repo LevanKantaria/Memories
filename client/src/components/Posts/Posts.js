@@ -15,7 +15,7 @@ const Posts = () => {
      likeCount={item.likeCount}
      createdAt={item.createdAt}
      image={item.selectedFile}
-     tags={item.tags}
+     tags={item.tags.map(tag=>`#${tag}`)}
      key={Math.random()}
      id={item.id}
      />

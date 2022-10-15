@@ -1,14 +1,12 @@
 import classes from "./Form.module.css";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { uploadPost } from "../../features/posts/postsSlice";
 import { postActions } from "../../features/posts/postsSlice";
 import CustomButton from "../CustomButton/CustomButton";
 import InputField from "../InputField/Input";
 import DragAndDrop from "../DragAndDrop/DragAndDrop";
-import TagsInput from "../TagsInput/TagsInput";
-import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-
+import ReactTagsInput from "../TagsInput/TagsInput";
 let creatorIsValid = false;
 let messageIsValid = false;
 let imageIsValid = false;
@@ -16,14 +14,12 @@ let titleIsValid = false;
 let tagsIsValid = false;
 
 const Form = (props) => {
-  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
   const [creator, setCreator] = useState("");
   const [tags, setTags] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
-  const inputRef = useRef(null);
 
   //     these change handlers are called from child input component
   // and 'e' holds e.target.value from the child , id hold id of input
@@ -41,7 +37,7 @@ const Form = (props) => {
   };
   const tagsChangeHandler = (e, valid) => {
     setTags(e);
-    console.log(e)
+    console.log(e.map(tag=>`£${tag}`));
     tagsIsValid = valid;
   };
   // const imageChangeHandler = (e, valid) => {
@@ -119,11 +115,12 @@ const Form = (props) => {
   };
 
   let buttonLabel;
-  if (loading) {
-    buttonLabel = "Sending Data...";
-  } else {
-    buttonLabel = "Submit";
-  }
+
+  buttonLabel = "Submit";
+  const selectedTags = (tags) => {
+    console.log(tags);
+  };
+
   return (
     <div className={classes.modalBackground}>
       <div className={classes.card}>
@@ -173,7 +170,11 @@ const Form = (props) => {
             onChange={tagsChangeHandler}
             value={tags}
           /> */}
-          <TagsInput onChange={tagsChangeHandler} />
+
+          
+          <ReactTagsInput onChange={tagsChangeHandler} />
+            {" "}
+          
 
           {/* <InputField
             id="image"
@@ -186,22 +187,20 @@ const Form = (props) => {
 
           <DragAndDrop onChange={imageUploadHandler} />
           <div className={classes.closeAndSubmit}>
-
             <CustomButton
               width="60%"
               height="50"
               onClick={props.onClose}
-              buttonText='cancel'
-              background='grey'
-              />
-          <CustomButton
-            width="30%"
-            height="50"
-            onClick={submitHandler}
-            buttonText={buttonLabel}
-            
+              buttonText="cancel"
+              background="grey"
             />
-            </div>
+            <CustomButton
+              width="30%"
+              height="50"
+              onClick={submitHandler}
+              buttonText={buttonLabel}
+            />
+          </div>
         </form>
       </div>
     </div>

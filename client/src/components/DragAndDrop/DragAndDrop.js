@@ -3,11 +3,10 @@ import { useDropzone } from "react-dropzone";
 import classes from "./DragAndDrop.module.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-// import { filterActions } from "../../../store";
 
 function DragAndDrop(props) {
-  const dispatch = useDispatch();
   const [dragIsValid, setDragIsValid] = useState(false);
+  const [dragIsTouched, setDragIsTouched] = useState(false)
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
   const [imageName, setImageName] = useState("");
 
@@ -30,31 +29,34 @@ function DragAndDrop(props) {
   useEffect(() => {
     if (files.length > 0) {
       setImageName(acceptedFiles[0].name);
-      // console.log("upload");
-      //   setDragIsValid(true);
-      // dispatch(filterActions.dragAndDropState(dragIsValid));
-      //   props.onChange();
+      setDragIsValid(true);
+      setDragIsTouched(true)
+
       var reader = new FileReader();
       reader.readAsDataURL(acceptedFiles[0]);
       reader.onload = function () {
-        // dispatch(filterActions.dragAndDropImage(reader.result));
         localStorage.setItem("image", reader.result);
-        props.onChange(reader.result, files.length>0)
-        // localStorage.setItem("image-name", acceptedFiles[0].name);
-        // console.log(acceptedFiles[0].name);
+        props.onChange(reader.result, files.length > 0);
       };
       reader.onerror = function (error) {
         console.log("Error: ", error);
       };
       return;
+    } else {
+      setDragIsValid(false);
     }
   }, [files]);
-
+  let dragAndDropClass = classes.dragDrop;
+  if (dragIsValid && dragIsTouched) {
+    dragAndDropClass = classes.dragDrop;
+  } else {
+    dragAndDropClass = classes.dragDropInvalid;
+  }
   return (
     <section>
       <div
         {...getRootProps({ className: "dropzone" })}
-        className={classes.dragDrop}
+        className={dragAndDropClass}
       >
         <input {...getInputProps()} />
         <div className={classes.dragText}>

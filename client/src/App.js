@@ -17,8 +17,13 @@ const App = () => {
   useEffect(() => {
     dispatch(fetchPosts());
   }, [dispatch]);
+  const selectedTags = (tags) => {
+    console.log(tags);
+  };
   return (
+
     <Container maxWidth="lg">
+   
       {displayFormModal && <Form 
         onClose={()=>{setDisplayFormModal(!displayFormModal)}}
       />}
